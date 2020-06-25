@@ -6,7 +6,13 @@
 
 var app = require('../app');
 // var debug = require('debug')('himalayapeople:server');
-var http = require('http');
+var https = require('https');
+var fs = require(fs);
+var path = require('path');
+
+
+var privateCrt = fs.readFileSync("/etc/v2ray/v2ray.crt", 'utf8');
+var privateKey = fs.readFileSync("/etc/v2ray/v2ray.key", 'utf8');
 
 /**
  * Get port from environment and store in Express.
