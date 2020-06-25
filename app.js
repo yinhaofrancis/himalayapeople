@@ -11,7 +11,7 @@ var app = express();
 app.all("*",(req, res, next) => {
     let host = req.headers.host;
     
-    if(req.protocol == "http"){
+    if(req.protocol == "http" && host != "localhost"){
         host = host.replace(/\:\d+$/, ''); // Remove port number
         res.redirect(307, `https://${host}${req.path}`);
     }
