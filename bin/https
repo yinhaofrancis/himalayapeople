@@ -96,3 +96,26 @@ function onListening() {
     : 'port ' + addr.port;
   // debug('Listening on ' + bind);
 }
+
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var httpport = 80;
+app.set('port', httpport);
+
+/**
+ * Create HTTP server.
+ */
+
+var httpserver = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+httpserver.listen(httpport);
+httpserver.on('error', onError);
+httpserver.on('listening', onListening);
