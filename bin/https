@@ -7,8 +7,7 @@
 var app = require('../app');
 // var debug = require('debug')('himalayapeople:server');
 var https = require('https');
-var fs = require(fs);
-var path = require('path');
+var fs = require('fs');
 
 
 var privateCrt = fs.readFileSync("/etc/v2ray/v2ray.crt", 'utf8');
