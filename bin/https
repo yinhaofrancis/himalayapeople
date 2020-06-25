@@ -13,7 +13,10 @@ var path = require('path');
 
 var privateCrt = fs.readFileSync("/etc/v2ray/v2ray.crt", 'utf8');
 var privateKey = fs.readFileSync("/etc/v2ray/v2ray.key", 'utf8');
-
+const HTTPS_OPTOIN = {
+  key: privateKey,
+  cert: privateCrt
+};
 /**
  * Get port from environment and store in Express.
  */
@@ -25,7 +28,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(HTTPS_OPTOIN,app);
 
 /**
  * Listen on provided port, on all network interfaces.
