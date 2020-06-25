@@ -10,7 +10,8 @@ var usersRouter = require('./routes/users');
 var app = express();
 app.all("*",(req, res, next) => {
     let host = req.headers.host;
-    if(host != "localhost"){
+    
+    if(host != "localhost" && req.protocol == "http"){
         host = host.replace(/\:\d+$/, ''); // Remove port number
         res.redirect(307, `https://${host}${req.path}`);
     }
