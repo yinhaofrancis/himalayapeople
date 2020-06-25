@@ -8,6 +8,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.all("*",(req, res, next) => {
+    let host = req.headers.host;
+    host = host.replace(/\:\d+$/, ''); // Remove port number
+    res.redirect(307, `https://${host}${req.path}`);
+})
 app.use(compression())
 app.use(logger('dev'));
 app.use(express.json());
