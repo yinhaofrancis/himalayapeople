@@ -15,6 +15,7 @@ app.all("*",(req, res, next) => {
         host = host.replace(/\:\d+$/, ''); // Remove port number
         res.redirect(307, `https://${host}${req.path}`);
     }
+    next();
 })
 app.use(compression())
 app.use(logger('dev'));
